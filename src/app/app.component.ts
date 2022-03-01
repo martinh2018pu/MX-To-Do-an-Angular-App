@@ -7,8 +7,8 @@ import { Todo } from './Todo';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  //title = 'mxtodo';
 
+  title = "Your todo list";
   todos: Todo[] = [];
   newTodo: string;
 

@@ -1,22 +1,25 @@
 <br>
-<!-- <h1 style="text-align: center;">Your to-do list</h1> -->
+<h1 style="text-align: center;">{{title}}</h1>
 <br>
 
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col col-lg-3">
 
-      <div class="input-group mb-3">
-        <input 
-          class="form-control shadow-none" 
-          type="text" 
-          placeholder="Enter your to-do..." 
-          [(ngModel)]="newTodo" 
-          aria-label="Enter your to-do" 
-          aria-describedby="btnCreateTodo">
+      <form>
+        <div class="input-group mb-3">
+          <input 
+            class="form-control shadow-none" 
+            type="text" 
+            placeholder="Enter your to-do..." 
+            [(ngModel)]="newTodo" 
+            [ngModelOptions]="{standalone: true}" 
+            aria-label="Enter your to-do" 
+            aria-describedby="btnCreateTodo">
 
-        <button class="btn btn-primary" type="button" id="btnCreateTodo" (click)="createTodo()">+</button>
-      </div>
+          <button class="btn btn-primary" type="submit" id="btnCreateTodo" (click)="createTodo()">+</button>
+        </div>
+      </form>
       
       <!-- Variant 1: With div that has class equal to input-group mb-3 -->
       <div *ngFor="let todo of todos; let i = index;">
