@@ -1,7 +1,5 @@
 <br>
-
 <!-- <h1 style="text-align: center;">Your to-do list</h1> -->
-
 <br>
 
 <div class="container">
@@ -9,19 +7,53 @@
     <div class="col col-lg-3">
 
       <div class="input-group mb-3">
-        <input type="text" class="form-control shadow-none" placeholder="Enter your to-do..." aria-label="Enter your to-do" aria-describedby="button-addon2" [(ngModel)]="newTodo">
-        <button class="btn btn-outline-secondary btn-primary myBtn" type="button" id="button-addon2" style="color: white;" (click)="createTodo()">+</button>
+        <input 
+          class="form-control shadow-none" 
+          type="text" 
+          placeholder="Enter your to-do..." 
+          [(ngModel)]="newTodo" 
+          aria-label="Enter your to-do" 
+          aria-describedby="btnCreateTodo">
+
+        <button class="btn btn-primary" type="button" id="btnCreateTodo" (click)="createTodo()">+</button>
+      </div>
+      
+      <!-- Variant 1: With div that has class equal to input-group mb-3 -->
+      <div *ngFor="let todo of todos; let i = index;">
+        <div class="input-group mb-3">
+          <div class="input-group-text">
+            <input 
+              class="form-check-input mt-0" 
+              type="checkbox" 
+              value="" 
+              (click)="setIsCompleted(i)" 
+              aria-label="Checkbox for following text input">
+
+          </div>
+
+          <input 
+            class="{{(todo.isCompleted) ? 'form-control shadow-none completedTodo' : 'form-control shadow-none'}}" 
+            type="text" 
+            disabled="{{todo.isCompleted}}" 
+            [(ngModel)]="todo.name" 
+            aria-label="Text input with checkbox" 
+            aria-describedby="btnDeleteTodo">
+
+          <button class="btn btn-danger" type="button" id="btnDeleteTodo" (click)="deleteTodo(i)">x</button>
+        </div>
       </div>
 
-      <table class="table table-borderless">
+      <!-- Variant 2: With table -->
+      <!-- <table class="table table-borderless">
         <tbody>
           <tr *ngFor="let todo of todos; let i = index;">
-            <!-- <th scope="row">{{i+1}}</th> -->
+            <th scope="row">{{i+1}}</th>
             <td class="{{(todo.isCompleted) ? 'completedTodo' : ''}}" (click)="setIsCompleted(i)">{{todo.name}}</td>
             <td style="color: red; font-weight: bold;" (click)="deleteTodo(i)">X</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
+      
     </div>
   </div>
 </div>
