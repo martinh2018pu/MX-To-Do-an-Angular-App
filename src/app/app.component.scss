@@ -1,0 +1,10 @@
+.completedTodo {
+    text-decoration: line-through;
+    
+}
+
+input:focus,
+button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
